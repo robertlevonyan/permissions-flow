@@ -1,0 +1,3 @@
+rootProject.name='PermissionFlow'
+include ':demo'
+include ':lib'
