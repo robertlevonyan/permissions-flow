@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 29
@@ -36,4 +37,14 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+
+publish {
+    groupId = 'com.innfinity'
+    artifactId = 'PermissionsFlow'
+    publishVersion = '1.0.0'
+    desc = 'A simple library to make it easy requesting permissions in Android using Kotlin Coroutines.'
+    licences = ['Apache-2.0']
+    website = 'https://github.com/innfinity-am/PermissionsFlow'
+    userOrg = 'innfinity-am'
 }
