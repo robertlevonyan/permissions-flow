@@ -1,4 +1,5 @@
 # Permissions Flow
+[ ![Download](https://api.bintray.com/packages/innfinity-am/maven/PermissionsFlow/images/download.svg) ](https://bintray.com/innfinity-am/maven/PermissionsFlow/_latestVersion)
 
 A simple library to make it easy requesting permissions in Android using Kotlin Coroutines.
 
