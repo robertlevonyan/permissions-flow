@@ -11,7 +11,7 @@ A simple library to make it easy requesting permissions in Android using Kotlin 
 Add following line of code to your module(app) level gradle file
 
 ```groovy
-    implementation 'com.innfinity:PermissionsFlow:1.0.0'
+    implementation 'com.innfinity:PermissionsFlow:1.0.1'
 ```
 
 #### Maven:
@@ -20,7 +20,7 @@ Add following line of code to your module(app) level gradle file
   <dependency>
     <groupId>com.innfinity</groupId>
     <artifactId>PermissionsFlow</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <type>pom</type>
   </dependency>
 ```

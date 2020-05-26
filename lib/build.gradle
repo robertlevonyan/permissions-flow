@@ -7,7 +7,7 @@ android {
     compileSdkVersion 29
 
     defaultConfig {
-        minSdkVersion 23
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -42,7 +42,7 @@ dependencies {
 publish {
     groupId = 'com.innfinity'
     artifactId = 'PermissionsFlow'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     desc = 'A simple library to make it easy requesting permissions in Android using Kotlin Coroutines.'
     licences = ['Apache-2.0']
     website = 'https://github.com/innfinity-am/PermissionsFlow'

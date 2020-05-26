@@ -1,5 +1,7 @@
 package com.innfinity.permissionflow.lib
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import kotlinx.coroutines.flow.flow
@@ -59,6 +61,7 @@ object PermissionFlow {
 
 }
 
+@RequiresApi(Build.VERSION_CODES.M)
 suspend fun permissionFlow(block: suspend PermissionFlow.() -> Unit) {
     block(PermissionFlow)
 }

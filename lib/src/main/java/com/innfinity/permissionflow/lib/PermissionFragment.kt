@@ -1,7 +1,9 @@
 package com.innfinity.permissionflow.lib
 
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import kotlinx.coroutines.CompletableDeferred
 
@@ -30,7 +32,7 @@ class PermissionFragment : Fragment() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (requestCode != REQUEST_PERMISSION) return
+        if (requestCode != REQUEST_PERMISSION || Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return
         completableDeferred.complete(permissions.map {
             Permission(
                 it,
@@ -41,11 +43,13 @@ class PermissionFragment : Fragment() {
         completableDeferred = CompletableDeferred()
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun showRequestPermissionRationale(permission: String) =
         activity?.run {
             !isPermissionGranted(permission) && shouldShowRequestPermissionRationale(permission)
         } ?: false
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun isPermissionGranted(permission: String): Boolean =
         activity?.run { checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED }
             ?: false
