@@ -59,6 +59,7 @@ class PermissionFragment : Fragment() {
         if (completableDeferred.isActive) {
             completableDeferred.cancel()
         }
+        completableDeferred = CompletableDeferred()
     }
 
 }
