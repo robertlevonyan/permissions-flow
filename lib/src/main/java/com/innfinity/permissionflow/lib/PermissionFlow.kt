@@ -42,7 +42,7 @@ internal object PermissionFlow {
                         detach(fragment)
                     }
                 }
-                .add(fragment, PermissionFragment::class.java.simpleName)
+                .add(fragment, FRAGMENT_TAG)
                 .commitNow()
         return fragment
     }
