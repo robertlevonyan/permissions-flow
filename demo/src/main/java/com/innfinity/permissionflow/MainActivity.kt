@@ -3,9 +3,9 @@ package com.innfinity.permissionflow
 import android.Manifest
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.innfinity.permissionflow.lib.permissionFlow
-import com.innfinity.permissionflow.lib.withActivity
-import com.innfinity.permissionflow.lib.withPermissions
+import com.innfinity.permissionflow.lib.Permission
+import com.innfinity.permissionflow.lib.requestEachPermissions
+import com.innfinity.permissionflow.lib.requestPermissions
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,31 +14,31 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        test.setOnClickListener {
+        tvState.text = "Permission results:"
+        btPermissionsAll.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
-                permissionFlow {
-                    withPermissions(
-                        Manifest.permission.CAMERA,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE
-                    )
-                    withActivity(this@MainActivity)
-
-                    //request all
-//                    request().collect { granted ->
-//                        println("PERMISSIONS $granted")
-//                    }
-
-                    //request sequentially
-                    requestEach().collect { permission ->
-                        println("PERMISSIONS $permission")
-                    }
-                }
+                this@MainActivity.requestPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .collect { permissions ->
+                            permissions.forEach {
+                                appendInfo("[ALL]", it)
+                            }
+                        }
             }
         }
+        btPermissionsEach.setOnClickListener {
+            CoroutineScope(Dispatchers.Main).launch {
+                this@MainActivity.requestEachPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .collect { permission ->
+                            appendInfo("[EACH]", permission)
+                        }
+            }
+        }
+    }
+
+    fun appendInfo(prefix: String, permission: Permission) {
+        tvState.text = "${tvState.text}\n$prefix ${permission.permission.substringAfterLast(".")} = ${permission.isGranted}"
     }
 }

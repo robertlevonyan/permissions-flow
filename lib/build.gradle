@@ -1,17 +1,15 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.novoda.bintray-release'
+//apply plugin: 'com.novoda.bintray-release'
 
 android {
-    compileSdkVersion 29
+
+    compileSdkVersion setup.compileSdk
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
+        minSdkVersion setup.minSdk
+        targetSdkVersion setup.targetSdk
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -26,20 +24,20 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.3.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutine}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutine}"
+
+    implementation "androidx.appcompat:appcompat:${androidx.appcompat}"
+    implementation "androidx.core:core-ktx:${androidx.core}"
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
 
-publish {
+/*publish {
     groupId = 'com.innfinity'
     artifactId = 'PermissionsFlow'
     publishVersion = '1.0.2'
@@ -47,4 +45,4 @@ publish {
     licences = ['Apache-2.0']
     website = 'https://github.com/innfinity-am/PermissionsFlow'
     userOrg = 'innfinity-am'
-}
+}*/
