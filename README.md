@@ -47,7 +47,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
         requestPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
             .collect { permissions ->
                 // here you get the result of the requests, permissions holds a list of Permission requests and you can check if all of them have been granted:
-                val allGranted = !permissions.map { it.isGranted }.contains(false)
+                val allGranted = permissions.find { !it.isGranted } == null
                 // or iterate over the permissions and check them one by one
                 permissions.forEach { 
                 	val granted = it.isGranted

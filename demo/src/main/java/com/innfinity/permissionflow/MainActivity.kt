@@ -22,6 +22,9 @@ class MainActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.Main).launch {
                 requestPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     .collect { permissions ->
+                        // check if all permissions have been granted
+                        // val allGranted = permissions.find { !it.isGranted } == null
+                        // or check them one by one
                         permissions.forEach {
                             appendInfo("[ALL]", it)
                         }
