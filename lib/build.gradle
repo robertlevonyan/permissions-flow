@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-//apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
 
@@ -37,7 +37,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
 
-/*publish {
+publish {
     groupId = 'com.innfinity'
     artifactId = 'PermissionsFlow'
     publishVersion = '1.0.2'
@@ -45,4 +45,4 @@ dependencies {
     licences = ['Apache-2.0']
     website = 'https://github.com/innfinity-am/PermissionsFlow'
     userOrg = 'innfinity-am'
-}*/
+}

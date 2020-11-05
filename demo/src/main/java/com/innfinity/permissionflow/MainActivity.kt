@@ -20,25 +20,25 @@ class MainActivity : AppCompatActivity() {
         tvState.text = "Permission results:"
         btPermissionsAll.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
-                this@MainActivity.requestPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        .collect { permissions ->
-                            permissions.forEach {
-                                appendInfo("[ALL]", it)
-                            }
+                requestPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    .collect { permissions ->
+                        permissions.forEach {
+                            appendInfo("[ALL]", it)
                         }
+                    }
             }
         }
         btPermissionsEach.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
-                this@MainActivity.requestEachPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        .collect { permission ->
-                            appendInfo("[EACH]", permission)
-                        }
+                requestEachPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    .collect { permission ->
+                        appendInfo("[EACH]", permission)
+                    }
             }
         }
     }
 
-    fun appendInfo(prefix: String, permission: Permission) {
+    private fun appendInfo(prefix: String, permission: Permission) {
         tvState.text = "${tvState.text}\n$prefix ${permission.permission.substringAfterLast(".")} = ${permission.isGranted}"
     }
 }

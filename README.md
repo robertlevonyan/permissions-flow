@@ -8,10 +8,10 @@ A simple library to make it easy requesting permissions in Android using Kotlin 
 
 #### Gradle:
 
-Add following line of code to your module(app) level gradle file
+Add following line of code to your module (app) level gradle file:
 
 ```groovy
-    implementation 'com.innfinity:PermissionsFlow:1.0.1'
+    implementation 'com.innfinity:PermissionsFlow:<LATEST-VERSION>'
 ```
 
 #### Maven:
@@ -25,31 +25,37 @@ Add following line of code to your module(app) level gradle file
   </dependency>
 ```
 
-## Usage
+###
 
-You need to implement few steps use the library.
+Permission flow offers 2 simple extension functions - both for for activities/fragments:
 
 ```kotlin
-  // Open a block of PermissionFlow
-  permissionFlow {
-    // specify permissions you want to request 
-    withPermissions(Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE)
+requestPermissions(vararg permissionsToRequest: String)
+requestEachPermissions(vararg permissionsToRequest: String)
+```
 
-    // add an instance of the fragment or activity, from where you are requesting permissions
-    withActivity(this@MainActivity)
-    //or
-    withFragment(this@MainFragment)
+Both functions do request all permissions passed to them - the first one emits a list of `Permissions`, the second one flattens the permissions.
 
-    //request for permissions
-    request().collect { granted: Boolean ->
-      // do something with result
-    }
-    //or
-    requestEach().collect { permission: Permission ->
-      // get result for each permission and see if it is either granted 
-      // or not, or should show a rationale explanation
-    }
-  }
+Here's a full code example like it would look like in an activity:
+
+
+```kotlin
+override fun onCreate(savedInstanceState: Bundle?) {
+ 
+     CoroutineScope(Dispatchers.Main).launch {
+	    // just call requestPermission and pass in all required permissions
+		requestPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+			.collect { permissions ->
+				// here you get the result of the requests, permissions holds a list of Permission requests and you can check if all of them have been granted:
+				val allGranted = !permissions.map { it.isGranted }.contains(false)
+				// or iterate over the permissions and check them one by one
+				permissions.forEach { 
+					val granted = it.isGranted
+					// ...
+				}
+			}
+	}
+}
 ```
 
 ## That's it!
