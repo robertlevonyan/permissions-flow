@@ -42,18 +42,18 @@ Here's a full code example like it would look like in an activity:
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
  
-     CoroutineScope(Dispatchers.Main).launch {
-	    // just call requestPermission and pass in all required permissions
-		requestPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-			.collect { permissions ->
-				// here you get the result of the requests, permissions holds a list of Permission requests and you can check if all of them have been granted:
-				val allGranted = !permissions.map { it.isGranted }.contains(false)
-				// or iterate over the permissions and check them one by one
-				permissions.forEach { 
-					val granted = it.isGranted
-					// ...
-				}
-			}
+    CoroutineScope(Dispatchers.Main).launch {
+        // just call requestPermission and pass in all required permissions
+        requestPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .collect { permissions ->
+                // here you get the result of the requests, permissions holds a list of Permission requests and you can check if all of them have been granted:
+                val allGranted = !permissions.map { it.isGranted }.contains(false)
+                // or iterate over the permissions and check them one by one
+                permissions.forEach { 
+                	val granted = it.isGranted
+                	// ...
+                }
+            }
 	}
 }
 ```
