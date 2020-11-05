@@ -25,7 +25,7 @@ Add following line of code to your module (app) level gradle file:
   </dependency>
 ```
 
-###
+### Usage:
 
 Permission flow offers 2 simple extension functions - both for for activities/fragments:
 
