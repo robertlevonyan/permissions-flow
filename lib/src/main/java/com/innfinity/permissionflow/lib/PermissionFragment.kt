@@ -4,6 +4,9 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.content.PermissionChecker
 import androidx.fragment.app.Fragment
 import kotlinx.coroutines.CompletableDeferred
 
@@ -43,16 +46,15 @@ class PermissionFragment : Fragment() {
         completableDeferred = CompletableDeferred()
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     private fun showRequestPermissionRationale(permission: String) =
-        activity?.run {
-            !isPermissionGranted(permission) && shouldShowRequestPermissionRationale(permission)
+        activity?.let {
+            !isPermissionGranted(permission) && ActivityCompat.shouldShowRequestPermissionRationale(it, permission)
         } ?: false
 
-    @RequiresApi(Build.VERSION_CODES.M)
     private fun isPermissionGranted(permission: String): Boolean =
-        activity?.run { checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED }
-            ?: false
+        activity?.let {
+            PermissionChecker.checkSelfPermission(it, permission) == PermissionChecker.PERMISSION_GRANTED
+        } ?: false
 
     override fun onDestroy() {
         super.onDestroy()
