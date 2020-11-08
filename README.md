@@ -20,7 +20,7 @@ Add following line of code to your module (app) level gradle file:
   <dependency>
     <groupId>com.innfinity</groupId>
     <artifactId>PermissionsFlow</artifactId>
-    <version>1.0.1</version>
+    <version>LATEST-VERSION</version>
     <type>pom</type>
   </dependency>
 ```
@@ -63,6 +63,10 @@ override fun onCreate(savedInstanceState: Bundle?) {
 With only few simple steps you can request permissions without splitting your code or overriding functions.
 
 ## Versions
+
+#### 1.0.3
+
+Extensions for Fragment and Activity added
 
 ### 1.0.0
 
