@@ -84,8 +84,6 @@ lint/outputs/
 lint/tmp/
 # lint/reports/
 /gradle/wrapper/gradle-wrapper.properties
-/gradle.properties
-/settings.gradle
 /.idea/
 /gradlew
 /gradle/wrapper/
