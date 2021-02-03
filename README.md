@@ -64,7 +64,7 @@ With only few simple steps you can request permissions without splitting your co
 
 ## Versions
 
-#### 1.0.3
+### 1.1.0
 
 Extensions for Fragment and Activity added
 
