@@ -41,7 +41,7 @@ dependencies {
     implementation "androidx.core:core-ktx:${androidx.core}"
 
 //    implementation project(":lib")
-    implementation 'com.innfinity:PermissionsFlow:1.1.0'
+    implementation 'com.innfinity:PermissionsFlow:1.1.1'
 
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

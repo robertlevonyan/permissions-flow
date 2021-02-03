@@ -49,7 +49,6 @@ internal object PermissionFlow {
 }
 
 // Extensions
-
 fun FragmentActivity.requestPermissions(vararg permissionsToRequest: String) = PermissionFlow.request(this, *permissionsToRequest)
 fun FragmentActivity.requestEachPermissions(vararg permissionsToRequest: String) = PermissionFlow.requestEach(this, *permissionsToRequest)
 fun Fragment.requestPermissions(vararg permissionsToRequest: String) = PermissionFlow.request(this, *permissionsToRequest)
