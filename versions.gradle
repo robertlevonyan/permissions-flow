@@ -12,9 +12,10 @@ ext {
     ]
 
     versions = [
-            bintray     : "0.9.2",
-            kotlin      : "1.4.10",
-            gradlePlugin: "3.6.4",
-            coroutine   : "1.4.1"
+            kotlin      : "1.4.21",
+            gradlePlugin: "4.1.2",
+            coroutine   : "1.4.2",
+            jfrog       : "1.8.4",
+            dcendents   : "1.4.1",
     ]
 }

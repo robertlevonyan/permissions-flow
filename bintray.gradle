@@ -1,0 +1,34 @@
+apply plugin: 'com.jfrog.bintray'
+
+version = '1.1.0'
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    archiveClassifier = 'sources'
+}
+
+artifacts {
+    archives sourcesJar
+}
+
+Properties properties = new Properties()
+properties.load(new FileInputStream("local.properties"))
+
+// Bintray
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    pkg {
+        repo = 'maven'
+        name = 'PermissionsFlow'
+        configurations = ['archives']
+        desc = 'A simple library to make it easy requesting permissions in Android using Kotlin Coroutines.'
+        websiteUrl = 'https://github.com/innfinity-am/PermissionsFlow'
+        vcsUrl = 'https://github.com/innfinity-am/PermissionsFlow.git'
+        licenses = ["Apache-2.0"]
+        userOrg = 'innfinity-am'
+        publish = true
+        publicDownloadNumbers = true
+    }
+}

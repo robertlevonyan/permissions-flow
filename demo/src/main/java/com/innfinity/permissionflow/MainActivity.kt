@@ -3,10 +3,10 @@ package com.innfinity.permissionflow
 import android.Manifest
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.innfinity.permissionflow.databinding.ActivityMainBinding
 import com.innfinity.permissionflow.lib.Permission
 import com.innfinity.permissionflow.lib.requestEachPermissions
 import com.innfinity.permissionflow.lib.requestPermissions
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -14,11 +14,14 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        tvState.text = "Permission results:"
-        btPermissionsAll.setOnClickListener {
+        binding.tvState.text = "Permission results:"
+
+        binding.btPermissionsAll.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
                 requestPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     .collect { permissions ->
@@ -31,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                     }
             }
         }
-        btPermissionsEach.setOnClickListener {
+        binding.btPermissionsEach.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
                 requestEachPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     .collect { permission ->
@@ -42,6 +45,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun appendInfo(prefix: String, permission: Permission) {
-        tvState.text = "${tvState.text}\n$prefix ${permission.permission.substringAfterLast(".")} = ${permission.isGranted}"
+        binding.tvState.text = "${binding.tvState.text}\n$prefix ${permission.permission.substringAfterLast(".")} = ${permission.isGranted}"
     }
 }

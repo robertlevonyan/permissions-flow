@@ -1,7 +1,10 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.novoda.bintray-release'
+
+ext {
+    GROUP_ID = 'com.innfinity'
+    ARTIFACT_ID = 'PermissionsFlow'
+}
 
 android {
     compileSdkVersion setup.compileSdk
@@ -12,14 +15,20 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
-
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        kotlinOptions.freeCompilerArgs += ['-module-name', "$GROUP_ID.$ARTIFACT_ID"]
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
@@ -31,17 +40,10 @@ dependencies {
     implementation "androidx.appcompat:appcompat:${androidx.appcompat}"
     implementation "androidx.core:core-ktx:${androidx.core}"
 
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
 
-publish {
-    groupId = 'com.innfinity'
-    artifactId = 'PermissionsFlow'
-    publishVersion = '1.0.3'
-    desc = 'A simple library to make it easy requesting permissions in Android using Kotlin Coroutines.'
-    licences = ['Apache-2.0']
-    website = 'https://github.com/innfinity-am/PermissionsFlow'
-    userOrg = 'innfinity-am'
-}
+apply from: '../install.gradle'
+apply from: '../bintray.gradle'
