@@ -82,7 +82,7 @@ With only few simple steps you can request permissions without splitting your co
 
 Migration to mavenCentral
 
-### 1.1.0
+#### 1.1.0
 
 Extensions for Fragment and Activity added
 

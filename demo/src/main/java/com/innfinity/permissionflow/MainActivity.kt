@@ -7,6 +7,8 @@ import androidx.lifecycle.lifecycleScope
 import com.innfinity.permissionflow.databinding.ActivityMainBinding
 import com.innfinity.permissionflow.lib.Permission
 import com.innfinity.permissionflow.lib.requestEachPermissions
+import com.innfinity.permissionflow.lib.requestPermissions
+import kotlinx.coroutines.flow.collect
 
 class MainActivity : AppCompatActivity() {
   private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
