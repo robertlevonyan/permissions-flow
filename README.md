@@ -1,24 +1,38 @@
 # Permissions Flow
-[ ![Download](https://api.bintray.com/packages/innfinity-am/maven/PermissionsFlow/images/download.svg) ](https://bintray.com/innfinity-am/maven/PermissionsFlow/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.robertlevonyan.components/PermissionsFlow/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.robertlevonyan.components/PermissionsFlow)
 [![API](https://img.shields.io/badge/API-21%2B-yellow.svg?style=flat)](https://android-arsenal.com/api?level=21)
 
 A simple library to make it easy requesting permissions in Android using Kotlin Coroutines.
 
 ## Setup
 
+Add following line of code to your project level gradle file
+
+```kotlin
+  repositories {
+    mavenCentral()
+  }
+```
+
 #### Gradle:
 
 Add following line of code to your module (app) level gradle file:
 
 ```groovy
-    implementation 'com.innfinity:PermissionsFlow:<LATEST-VERSION>'
+    implementation 'com.robertlevonyan.components:PermissionsFlow:<LATEST-VERSION>'
+```
+
+#### Kotlin:
+
+```kotlin
+    implementation("com.robertlevonyan.components:PermissionsFlow:$LATEST_VERSION")
 ```
 
 #### Maven:
 
 ```xml
   <dependency>
-    <groupId>com.innfinity</groupId>
+    <groupId>com.robertlevonyan.components</groupId>
     <artifactId>PermissionsFlow</artifactId>
     <version>LATEST-VERSION</version>
     <type>pom</type>
@@ -63,6 +77,10 @@ override fun onCreate(savedInstanceState: Bundle?) {
 With only few simple steps you can request permissions without splitting your code or overriding functions.
 
 ## Versions
+
+#### 1.2.0
+
+Migration to mavenCentral
 
 ### 1.1.0
 
