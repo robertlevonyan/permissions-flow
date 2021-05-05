@@ -3,12 +3,10 @@ package com.innfinity.permissionflow
 import android.Manifest
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.innfinity.permissionflow.databinding.ActivityMainBinding
 import com.innfinity.permissionflow.lib.Permission
 import com.innfinity.permissionflow.lib.requestEachPermissions
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
   private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
@@ -19,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     binding.tvState.text = "Permission results:"
 
     binding.btPermissionsAll.setOnClickListener {
-      CoroutineScope(Dispatchers.Main).launch {
+      lifecycleScope.launchWhenCreated {
         requestPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
           .collect { permissions ->
             // check if all permissions have been granted
@@ -32,7 +30,7 @@ class MainActivity : AppCompatActivity() {
       }
     }
     binding.btPermissionsEach.setOnClickListener {
-      CoroutineScope(Dispatchers.Main).launch {
+      lifecycleScope.launchWhenCreated {
         requestEachPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
           .collect { permission ->
             appendInfo("[EACH]", permission)
