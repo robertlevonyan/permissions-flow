@@ -9,6 +9,7 @@ import com.innfinity.permissionflow.lib.Permission
 import com.innfinity.permissionflow.lib.requestEachPermissions
 import com.innfinity.permissionflow.lib.requestPermissions
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
   private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
@@ -19,8 +20,8 @@ class MainActivity : AppCompatActivity() {
     binding.tvState.text = "Permission results:"
 
     binding.btPermissionsAll.setOnClickListener {
-      lifecycleScope.launchWhenCreated {
-        requestPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
+      lifecycleScope.launch {
+        requestPermissions(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
           .collect { permissions ->
             // check if all permissions have been granted
             // val allGranted = permissions.find { !it.isGranted } == null
@@ -32,8 +33,8 @@ class MainActivity : AppCompatActivity() {
       }
     }
     binding.btPermissionsEach.setOnClickListener {
-      lifecycleScope.launchWhenCreated {
-        requestEachPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
+      lifecycleScope.launch {
+        requestEachPermissions(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
           .collect { permission ->
             appendInfo("[EACH]", permission)
           }
