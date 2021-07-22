@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     binding.btPermissionsAll.setOnClickListener {
       lifecycleScope.launchWhenCreated {
-        requestPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        requestPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
           .collect { permissions ->
             // check if all permissions have been granted
             // val allGranted = permissions.find { !it.isGranted } == null
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     }
     binding.btPermissionsEach.setOnClickListener {
       lifecycleScope.launchWhenCreated {
-        requestEachPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        requestEachPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
           .collect { permission ->
             appendInfo("[EACH]", permission)
           }
