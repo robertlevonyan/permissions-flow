@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-  compileSdkVersion(31)
+  compileSdk = 31
 
   defaultConfig {
     applicationId = "com.innfinity.permissionflow"
-    minSdkVersion(21)
-    targetSdkVersion(31)
+    minSdk = 21
+    targetSdk = 31
     versionCode = 1
     versionName = "1.0"
 
@@ -25,11 +25,11 @@ android {
     }
   }
   compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
   }
   kotlinOptions {
-    jvmTarget = "1.8"
+    jvmTarget = "11"
   }
 }
 
@@ -38,9 +38,9 @@ dependencies {
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0")
 
-  implementation("androidx.appcompat:appcompat:1.3.0")
+  implementation("androidx.appcompat:appcompat:1.3.1")
   implementation("androidx.core:core-ktx:1.6.0")
-  implementation("androidx.fragment:fragment-ktx:1.3.5")
+  implementation("androidx.fragment:fragment-ktx:1.3.6")
 
-  implementation ("com.robertlevonyan.components:PermissionsFlow:1.2.1")
+  implementation ("com.robertlevonyan.components:PermissionsFlow:1.2.2")
 }

@@ -78,9 +78,11 @@ With only few simple steps you can request permissions without splitting your co
 
 ## Versions
 
-#### 1.2.1
+#### 1.2.1 - 1.2.2
 
+Update to Java 11
 SDK 31 ready
+Minor updates
 
 ### 1.2.0
 
