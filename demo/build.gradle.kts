@@ -42,5 +42,5 @@ dependencies {
   implementation("androidx.core:core-ktx:1.6.0")
   implementation("androidx.fragment:fragment-ktx:1.3.6")
 
-  implementation ("com.robertlevonyan.components:PermissionsFlow:1.2.2")
+  implementation ("com.robertlevonyan.components:PermissionsFlow:1.2.3")
 }
