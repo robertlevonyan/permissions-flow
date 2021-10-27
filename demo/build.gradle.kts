@@ -35,12 +35,12 @@ android {
 
 dependencies {
   implementation(kotlin("stdlib"))
-  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
-  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0")
+  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
 
   implementation("androidx.appcompat:appcompat:1.3.1")
   implementation("androidx.core:core-ktx:1.6.0")
   implementation("androidx.fragment:fragment-ktx:1.3.6")
 
-  implementation ("com.robertlevonyan.components:PermissionsFlow:1.2.3")
+  implementation ("com.robertlevonyan.components:PermissionsFlow:1.2.4")
 }

@@ -1,2 +1,2 @@
 include ':demo'
-include ':lib'
+include ':permissionflow'
