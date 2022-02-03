@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-  compileSdk = 31
+  compileSdk = 32
 
   defaultConfig {
     minSdk = 21
-    targetSdk = 31
+    targetSdk = 32
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     consumerProguardFiles("consumer-rules.pro")
   }
@@ -38,10 +38,10 @@ allprojects {
 
 dependencies {
   implementation(kotlin("stdlib"))
-  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
-  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt")
+  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0-native-mt")
 
-  implementation("androidx.appcompat:appcompat:1.3.1")
-  implementation("androidx.core:core-ktx:1.6.0")
-  implementation("androidx.fragment:fragment-ktx:1.3.6")
+  implementation("androidx.appcompat:appcompat:1.4.1")
+  implementation("androidx.core:core-ktx:1.7.0")
+  implementation("androidx.fragment:fragment-ktx:1.4.1")
 }
