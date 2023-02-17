@@ -28,12 +28,6 @@ android {
   }
 }
 
-mavenPublishing {
-  publishToMavenCentral(host = com.vanniktech.maven.publish.SonatypeHost.S01)
-
-  signAllPublications()
-}
-
 dependencies {
   implementation(kotlin("stdlib"))
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")

@@ -23,7 +23,7 @@ class PermissionFragment : Fragment() {
   }
 
   fun request(vararg permissions: String) {
-    permissionRequest.launch(permissions)
+    permissionRequest.launch(permissions.toList().toTypedArray())
   }
 
   private fun showRequestPermissionRationale(permission: String) =
