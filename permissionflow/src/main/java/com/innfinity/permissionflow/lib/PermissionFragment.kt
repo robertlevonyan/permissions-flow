@@ -6,7 +6,7 @@ import androidx.core.content.PermissionChecker
 import androidx.fragment.app.Fragment
 import kotlinx.coroutines.CompletableDeferred
 
-class PermissionFragment : Fragment() {
+internal class PermissionFragment : Fragment() {
   var completableDeferred: CompletableDeferred<List<Permission>> = CompletableDeferred()
 
   private val permissionRequest = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
