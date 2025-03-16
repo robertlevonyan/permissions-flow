@@ -1,6 +1,7 @@
 # Permissions Flow
 #### Versions
 |PermissionsFlow|permission-compose|
+| --- | --- |
 |![Maven Central Version](https://img.shields.io/maven-central/v/com.robertlevonyan.components/PermissionsFlow)|![Maven Central Version](https://img.shields.io/maven-central/v/com.robertlevonyan.components/permission-compose)|
 
 
@@ -43,7 +44,7 @@ Add following line of code to your module (app) level gradle file:
 
 ### For Jetpack Compose
 ```kotlin
-    implementation("com.robertlevonyan.components:permission-compose:0.0.1")
+    implementation("com.robertlevonyan.components:permission-compose:$LATEST_VERSION")
 ```
 
 ### Usage:
