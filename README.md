@@ -1,6 +1,8 @@
 # Permissions Flow
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.robertlevonyan.components/PermissionsFlow/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.robertlevonyan.components/PermissionsFlow)
-[![API](https://img.shields.io/badge/API-21%2B-yellow.svg?style=flat)](https://android-arsenal.com/api?level=21)
+#### Versions
+|PermissionsFlow|permission-compose|
+|![Maven Central Version](https://img.shields.io/maven-central/v/com.robertlevonyan.components/PermissionsFlow)|![Maven Central Version](https://img.shields.io/maven-central/v/com.robertlevonyan.components/permission-compose)|
+
 
 A simple library to make it easy requesting permissions in Android using Kotlin Coroutines.
 
@@ -39,19 +41,23 @@ Add following line of code to your module (app) level gradle file:
   </dependency>
 ```
 
+### For Jetpack Compose
+```kotlin
+    implementation("com.robertlevonyan.components:permission-compose:0.0.1")
+```
+
 ### Usage:
 
 Permission flow offers 2 simple extension functions - both for for activities/fragments:
 
 ```kotlin
-requestPermissions(vararg permissionsToRequest: String)
-requestEachPermissions(vararg permissionsToRequest: String)
+    requestPermissions(vararg permissionsToRequest: String)
+    requestEachPermissions(vararg permissionsToRequest: String)
 ```
 
 Both functions do request all permissions passed to them - the first one emits a list of `Permissions`, the second one flattens the permissions.
 
 Here's a full code example like it would look like in an activity:
-
 
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,11 +78,27 @@ override fun onCreate(savedInstanceState: Bundle?) {
 }
 ```
 
+### For Jetpack Compose
+```kotlin
+    @Composable
+    fun AppContent() {
+        val permissionState = rememberPermissionState(listOf(Manifest.permission.CAMERA)) { granted ->
+            // do something awesome
+        }
+    
+        // ...
+
+        permissionState.launchPermissionRequest()
+    }
+```
+
 ## That's it!
 
 With only few simple steps you can request permissions without splitting your code or overriding functions.
 
 ## Versions
+#### 1.2.8
+Version and dependency bump
 
 #### 1.2.1 - 1.2.3
 
