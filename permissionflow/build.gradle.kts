@@ -1,17 +1,14 @@
 plugins {
-  id("com.android.library")
-  kotlin("android")
-  id("com.vanniktech.maven.publish")
+  alias(libs.plugins.android.library)
+  alias(libs.plugins.kotlin.android)
+  alias(libs.plugins.maven.publish)
 }
 
 android {
-  compileSdk = 34
+  compileSdk = 35
 
   defaultConfig {
     minSdk = 21
-    targetSdk = 34
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    consumerProguardFiles("consumer-rules.pro")
   }
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -25,10 +22,10 @@ android {
 
 dependencies {
   implementation(kotlin("stdlib"))
-  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+  implementation(libs.kotlinx.coroutines.core)
+  implementation(libs.kotlinx.coroutines.android)
 
-  implementation("androidx.appcompat:appcompat:1.6.1")
-  implementation("androidx.core:core-ktx:1.12.0")
-  implementation("androidx.fragment:fragment-ktx:1.6.1")
+  implementation(libs.androidx.appcompat)
+  implementation(libs.androidx.core.ktx)
+  implementation(libs.androidx.fragment.ktx)
 }

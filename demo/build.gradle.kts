@@ -1,19 +1,17 @@
 plugins {
-  id("com.android.application")
-  kotlin("android")
+  alias(libs.plugins.android.application)
+  alias(libs.plugins.kotlin.android)
 }
 
 android {
-  compileSdk = 34
+  compileSdk = 35
 
   defaultConfig {
     applicationId = "com.innfinity.permissionflow"
     minSdk = 21
-    targetSdk = 34
+    targetSdk = 35
     versionCode = 1
     versionName = "1.0"
-
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
   buildFeatures {
     viewBinding = true
@@ -30,12 +28,13 @@ android {
 
 dependencies {
   implementation(kotlin("stdlib"))
-  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+  implementation(libs.kotlinx.coroutines.core)
+  implementation(libs.kotlinx.coroutines.android)
 
-  implementation("androidx.appcompat:appcompat:1.6.1")
-  implementation("androidx.core:core-ktx:1.12.0")
-  implementation("androidx.fragment:fragment-ktx:1.6.1")
+  implementation(libs.androidx.appcompat)
+  implementation(libs.androidx.core.ktx)
+  implementation(libs.androidx.fragment.ktx)
 
-  implementation ("com.robertlevonyan.components:PermissionsFlow:1.2.5")
+  implementation(libs.permission.flow)
+  implementation(libs.permission.compose)
 }

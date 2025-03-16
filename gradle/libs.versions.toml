@@ -1,0 +1,35 @@
+[versions]
+androidGradlePlugin = "8.9.0"
+androidxActivity = "1.10.1"
+androidxComposeBom = "2025.03.00"
+appcompat = "1.7.0"
+coreKtx = "1.15.0"
+fragmentKtx = "1.8.6"
+kotlin = "2.1.10"
+dokka = "1.9.20"
+kotlinxCoroutinesAndroid = "1.10.1"
+kotlinxCoroutinesCore = "1.8.0"
+material = "1.12.0"
+maven = "0.31.0"
+permissionCompose = "0.0.1"
+permissionsflow = "1.2.8"
+
+[libraries]
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+permission-compose = { module = "com.robertlevonyan.components:permission-compose", version.ref = "permissionCompose" }
+permission-flow = { module = "com.robertlevonyan.components:PermissionsFlow", version.ref = "permissionsflow" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven" }
