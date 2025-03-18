@@ -8,7 +8,7 @@ android {
 
   defaultConfig {
     applicationId = "com.innfinity.permissionflow"
-    minSdk = 21
+    minSdk = 27
     targetSdk = 35
     versionCode = 1
     versionName = "1.0"
@@ -27,7 +27,6 @@ android {
 }
 
 dependencies {
-  implementation(kotlin("stdlib"))
   implementation(libs.kotlinx.coroutines.core)
   implementation(libs.kotlinx.coroutines.android)
 
