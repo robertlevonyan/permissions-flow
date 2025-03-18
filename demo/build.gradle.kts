@@ -35,5 +35,4 @@ dependencies {
   implementation(libs.androidx.fragment.ktx)
 
   implementation(libs.permission.flow)
-  implementation(libs.permission.compose)
 }
