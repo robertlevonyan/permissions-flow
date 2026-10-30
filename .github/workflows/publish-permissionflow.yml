@@ -1,0 +1,44 @@
+name: Publish PermissionsFlow
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version to publish (leave empty to use VERSION_NAME from permissionflow/gradle.properties)
+        required: false
+        type: string
+
+concurrency:
+  group: publish-permissionflow
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 17
+
+      # The Gradle wrapper is gitignored, so install the matching Gradle version directly
+      - uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: 9.6.0
+
+      - name: Build and test
+        run: gradle :permissionflow:assembleRelease :permissionflow:testDebugUnitTest :permissionflow:lintRelease
+
+      - name: Publish to Maven Central
+        run: gradle :permissionflow:publishAndReleaseToMavenCentral ${VERSION:+-PVERSION_NAME=$VERSION}
+        env:
+          VERSION: ${{ inputs.version }}
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.SIGNING_KEY_ID }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
