@@ -98,6 +98,9 @@ override fun onCreate(savedInstanceState: Bundle?) {
 With only few simple steps you can request permissions without splitting your code or overriding functions.
 
 ## Versions
+#### 1.3.0 (PermissionsFlow) / 0.1.0 (permission-compose)
+AGP 9 with built-in Kotlin, Java 17 toolchain, compile/target SDK 37, dependency bump
+
 #### 1.2.8
 Version and dependency bump
 

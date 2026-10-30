@@ -1,23 +1,17 @@
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.maven.publish)
 }
 
 android {
     namespace = "com.innfinity.compose.permissions"
-    compileSdk = 35
+    compileSdk = 37
 
-    defaultConfig {
-        minSdk = 27
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = "17"
-    }
+    defaultConfig.minSdk = 27
+}
+
+kotlin {
+    jvmToolchain(17)
 }
 
 dependencies {
